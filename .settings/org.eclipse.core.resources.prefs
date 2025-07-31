@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//src/com/example/MainApp.java=UTF-8
+encoding//src/com/example/aspect/LoggingAspect.java=UTF-8
+encoding//src/com/example/config/AppConfig.java=UTF-8
+encoding//src/com/example/service/BankService.java=UTF-8

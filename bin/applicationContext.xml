@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop 
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- ✅ Define the Target Bean -->
+    <bean id="bankService" class="com.example.service.BankService"/>
+
+    <!-- ✅ Define the Aspect Bean -->
+    <bean id="loggingAspect" class="com.example.aspect.LoggingAspect"/>
+
+    <!-- ✅ AOP Configuration -->
+    <aop:config>
+        <aop:aspect id="loggingAspectBean" ref="loggingAspect">
+            <!-- Define Pointcut for withdraw() method -->
+            <aop:pointcut id="withdrawPointcut" expression="execution(* com.example.service.BankService.withdraw(..))"/>
+            
+            <!-- ✅ Correct Placement of Before Advice -->
+            <aop:before method="logBefore" pointcut-ref="withdrawPointcut"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>
